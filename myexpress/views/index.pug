@@ -1,0 +1,12 @@
+//- 9.6 working with includes
+include includes/head.pug
+
+//- h1 Welcome
+//- 9.3 loading in dynamic values
+    h1 #{title}
+//- 9.4 working with condtionals
+if showTitle
+    h1 #{title}
+//- 9.5 working with each loop
+each person, i in people
+    li #{person}
