@@ -3,7 +3,9 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
 // 9 set up Pug template engine
-var pug = require('pug')
+// var pug = require('pug')
+// 10 set up EJS
+var ejs = require('ejs')
 
 var port = 4000;
 
@@ -18,7 +20,10 @@ app.use(function(req, res, next){
 });
 
 //9.1 Setup the view engine
-app.set('view engine', 'pug');
+// app.set('view engine', 'pug');
+// 10.1 set up the view engine to ejs
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views')); 
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -40,8 +45,14 @@ app.get('/', function(req, res) {
 })
 //7. Set up some more routes
 app.get('/about', function(req, res) {
-    res.send('About Page')
+    res.render('about')
 })
+
+//11. Set up the contact route
+app.get('/contact', function(req, res) {
+    res.render('contact')
+})
+
 
 //4 .listen in on the port
 app.listen(port);
